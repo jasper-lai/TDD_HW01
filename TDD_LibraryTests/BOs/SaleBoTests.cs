@@ -109,17 +109,17 @@ namespace TDD_Library.BOs.Tests
         }
 
         /// <summary>
-        /// GroupAndSumTest_未傳加總運算_回傳例外狀況_ArgumentNullException
+        /// GroupAndSumTest_未傳加總運算式_回傳例外狀況_ArgumentNullException
         /// </summary>
         /// <remarks>
         /// FluentAssertions
         /// </remarks>
         [TestMethod()]
-        public void GroupAndSumTest_未傳加總運算_回傳例外狀況_ArgumentNullException()
+        public void GroupAndSumTest_未傳加總運算式_回傳例外狀況_ArgumentNullException()
         {
             List<int> expected = new List<int>() { 50, 66, 60 };
 
-            //筆數為負值
+            //未傳加總運算式
             Func<List<int>> func = () => _datas.GroupByAndSum(4, null).ToList();
             Action act = () => func();
 
