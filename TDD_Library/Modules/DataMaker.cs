@@ -7,9 +7,9 @@ using TDD_Library.Models;
 
 namespace TDD_Library.Modules
 {
-    public class DataMaker
+    public static class DataMaker
     {
-        public List<SaleModel> MakeData()
+        public static List<SaleModel> MakeData()
         {
             List<SaleModel> results = new List<SaleModel>();
 

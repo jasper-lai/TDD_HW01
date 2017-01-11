@@ -14,14 +14,15 @@ namespace TDD_Library.BOs
         /// <summary>
         /// 取得每3筆的 Cost 欄位總和
         /// </summary>
-        /// <param name="datas"></param>
+        /// <param name="datas">測試的資料集合</param>
+        /// <param name="groupCnt">幾筆為1組</param>
         /// <returns></returns>
-        public List<int> GetSumForCost(List<SaleModel> datas)
+        public List<int> GetSumForCost(List<SaleModel> datas, int groupCnt)
         {
 
             List<int> results = new List<int>();
 
-            results = datas.GroupByAndSum(3, x => x.Cost).ToList();
+            results = datas.GroupByAndSum(groupCnt, x => x.Cost).ToList();
 
             return results;
         }
@@ -29,13 +30,14 @@ namespace TDD_Library.BOs
         /// <summary>
         /// 取得每4筆的 Revenue 欄位總和
         /// </summary>
-        /// <param name="datas"></param>
+        /// <param name="datas">測試的資料集合</param>
+        /// <param name="groupCnt">幾筆為1組</param>
         /// <returns></returns>
-        public List<int> GetSumForRevenue(List<SaleModel> datas)
+        public List<int> GetSumForRevenue(List<SaleModel> datas, int groupCnt)
         {
             List<int> results = new List<int>();
 
-            results = datas.GroupByAndSum(4, x => x.Revenue).ToList();
+            results = datas.GroupByAndSum(groupCnt, x => x.Revenue).ToList();
 
             return results;
         }
