@@ -34,6 +34,79 @@ namespace TDD_Library.Modules.Tests
             return results;
         }
 
+        #region GroupByAndSum
+
+        /// <summary>
+        /// GroupAndSumTest_3筆1組_加總Cost欄位_應回傳_6_15_24_21
+        /// </summary>
+        /// <remarks>
+        /// 採用 ExpectedObjects framework 作驗證
+        /// </remarks>
+        [TestMethod()]
+        [TestCategory("GroupByAndSum")]
+        public void GroupByAndSumTest_3筆1組_加總Cost欄位_應回傳_6_15_24_21()
+        {
+            List<int> expected = new List<int>() { 6, 15, 24, 21 };
+
+            List<int> actual = MakeData().GroupByAndSum(3, x => x.Cost).ToList();
+
+            expected.ToExpectedObject().ShouldEqual(actual);
+        }
+
+        /// <summary>
+        /// GroupAndSumTest_3筆1組_加總Revenue欄位_應回傳_50_66_60
+        /// </summary>
+        /// <remarks>
+        /// 採用 ExpectedObjects framework 作驗證
+        /// </remarks>
+        [TestMethod()]
+        [TestCategory("GroupByAndSum")]
+        public void GroupByAndSumTest_3筆1組_加總Revenue欄位_應回傳_50_66_60()
+        {
+            List<int> expected = new List<int>() { 50, 66, 60 };
+
+            List<int> actual = MakeData().GroupByAndSum(4, x => x.Revenue).ToList();
+
+            expected.ToExpectedObject().ShouldEqual(actual);
+        }
+
+        /// <summary>
+        /// GroupAndSumTest_筆數為負值_回傳例外狀況_ArgumentOutOfRangeException
+        /// </summary>
+        /// <remarks>
+        /// FluentAssertions
+        /// </remarks>
+        [TestMethod()]
+        [TestCategory("GroupByAndSum")]
+        public void GroupByAndSumTest_筆數為負值_回傳例外狀況_ArgumentOutOfRangeException()
+        {
+
+            //筆數為負值
+            Func<List<int>> func = () => MakeData().GroupByAndSum(-1, x => x.Revenue).ToList();
+            Action act = () => func();
+
+            act.ShouldThrow<ArgumentOutOfRangeException>();
+        }
+
+        /// <summary>
+        /// GroupAndSumTest_未傳加總運算式_回傳例外狀況_ArgumentNullException
+        /// </summary>
+        /// <remarks>
+        /// FluentAssertions
+        /// </remarks>
+        [TestMethod()]
+        [TestCategory("GroupByAndSum")]
+        public void GroupByAndSumTest_未傳加總運算式_回傳例外狀況_ArgumentNullException()
+        {
+
+            //未傳加總運算式
+            Func<List<int>> func = () => MakeData().GroupByAndSum(4, null).ToList();
+            Action act = () => func();
+
+            act.ShouldThrow<ArgumentNullException>();
+        }
+
+        #endregion
 
         #region GroupByAndSum2
 
