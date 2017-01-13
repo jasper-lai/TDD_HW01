@@ -117,8 +117,6 @@ namespace TDD_Library.Modules
         /// <returns></returns>
         public static IEnumerable<int> GroupByAndSum2<T>(this IEnumerable<T> datas, Func<T, int> funcGroupBy, Func<T, int> funcSum)
         {
-            //List<int> results = new List<int>();
-
             #region 檢查傳入參數
 
             if (null == funcGroupBy)
@@ -135,7 +133,7 @@ namespace TDD_Library.Modules
 
             #region 分組並取得各組內部加總的值
 
-            var query = datas.GroupBy(funcGroupBy, (id, items) => new
+            var groupSum = datas.GroupBy(funcGroupBy, (id, items) => new
             {
                 Key = id,
                 Count = items.Count(),
@@ -144,17 +142,11 @@ namespace TDD_Library.Modules
 
             #endregion
 
-            #region 組成回傳結果
+            #region 回傳結果
 
-            foreach (var item in query)
-            {
-                yield return item.Sum;
-                //results.Add(item.Sum);
-            }
+            return groupSum.Select(x => x.Sum);
 
             #endregion
-
-            //return results;
         }
 
     }
