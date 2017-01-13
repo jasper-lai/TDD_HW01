@@ -65,7 +65,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BOs\SaleBoTests.cs" />
     <Compile Include="Modules\GroupByAndSumExtensionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -77,6 +76,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BOs\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
